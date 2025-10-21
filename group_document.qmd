@@ -10,4 +10,12 @@ editor: visual
 
 ## s253711 - Szymon
 
+sgdthjdfjjhf\\
+
+```{r}
+x <- 7
+b <- 9
+c <- x+b
+```
+
 ## **s243865 - Lily**
