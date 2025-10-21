@@ -6,9 +6,29 @@ editor: visual
 
 ## s253707 - André
 
+Hi guys!
+
+```{r}
+print("Hello World")
+```
+
 ## s253709 - Cat
 
+Hey people, hey world
+
+```{r}
+print(2+2)
+```
+
 ## s253711 - Szymon
+
+sgdthjdfjjhf\\
+
+```{r}
+x <- 7
+b <- 9
+c <- x+b
+```
 
 ## **s243865 - Lily**
 
