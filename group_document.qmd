@@ -11,3 +11,10 @@ editor: visual
 ## s253711 - Szymon
 
 ## **s243865 - Lily**
+
+Made a list.
+
+```{r}
+s <- list(2,4,3,8,6,5)
+
+```
