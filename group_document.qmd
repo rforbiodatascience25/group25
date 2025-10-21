@@ -20,6 +20,27 @@ Hey people, hey world
 print(2+2)
 ```
 
+New Feature
+
+```{r}
+
+x <- 2444444
+y <- 632487
+z <- x/y
+print(z)
+
+```
+
+New Analysis
+
+```{r}
+
+x <- 2444444
+y <- 632487
+z <- x/y
+print(z)
+```
+
 ## s253711 - Szymon
 
 sgdthjdfjjhf\\
