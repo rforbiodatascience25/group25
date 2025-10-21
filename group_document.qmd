@@ -30,6 +30,19 @@ b <- 9
 c <- x+b
 ```
 
+#### New feature
+
+sdcagvthjsfkdcvtyjeacsdaervtyucesrvafyu
+
+```{r}
+c <- b +c
+for (x in 1:10) {
+  c <- c+x
+  c
+} 
+
+```
+
 ## **s243865 - Lily**
 
 Made a list.
