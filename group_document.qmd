@@ -12,6 +12,15 @@ Hi guys!
 print("Hello World")
 ```
 
+### New feature
+
+whats up
+
+```{r}
+x = 5
+x^2
+```
+
 ## s253709 - Cat
 
 Hey people, hey world
