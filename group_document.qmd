@@ -6,6 +6,12 @@ editor: visual
 
 ## s253707 - André
 
+Hi guys!
+
+```{r}
+print("Hello World")
+```
+
 ## s253709 - Cat
 
 ## s253711 - Szymon
