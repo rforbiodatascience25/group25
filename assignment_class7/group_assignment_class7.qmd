@@ -16,19 +16,9 @@ library("here")
 # Load Data
 
 ```{r}
-raw_dir <- "data" 
-data_file <- "gravier.RData" 
-data_loc <- "https://github.com/ramhiser/datamicroarray/raw/master/data/"
+data_file <- here("gravier.RData")
 ```
 
 ```{r}
-if( !file.exists(str_c(raw_dir, data_file)) ){
-  download.file(
-    url = str_c(data_loc, data_file),
-    destfile = str_c(raw_dir, data_file))
-}
-```
-
-```{r}
-load(file = str_c(raw_dir, data_file))
+load(file = data_file)
 ```
