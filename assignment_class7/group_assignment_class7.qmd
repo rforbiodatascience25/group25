@@ -6,6 +6,20 @@ format:
 editor: visual
 ---
 
+### Students:
+
+-   André Godinho, s253707, Msc Bioinformatics
+
+-   Catarina Anastácio, s253709, Msc Bioinformatics
+
+-   Lily Whipple, s243865, Msc Bioinformatics
+
+-   Szymon Cholewiński, s253711, Msc Bioinformatics
+
+-   Magnus, s190867, Msc Bioinformatics
+
+## Libraries
+
 ```{r}
 #| message: false
 library("tidyverse")
@@ -14,7 +28,7 @@ library("broom")
 library("cowplot")
 ```
 
-# Load, Clean and Augment Data
+## Load, Clean and Augment Data
 
 ```{r}
 data_file <- here("gravier.RData")
@@ -33,7 +47,7 @@ gravier_clean_aug <- gravier_clean |>
   relocate(outcome = y)
 ```
 
-# PCA Analysis
+## PCA Analysis
 
 In general, when performing PCA, we’ll want to do (at least) three things:
 
