@@ -3101,14 +3101,27 @@ vertical-align: -.125em;
 </header>
 
 
+<section id="students" class="level3">
+<h3 class="anchored" data-anchor-id="students">Students:</h3>
+<ul>
+<li><p>André Godinho, s253707, Msc Bioinformatics</p></li>
+<li><p>Catarina Anastácio, s253709, Msc Bioinformatics</p></li>
+<li><p>Lily Whipple, s243865, Msc Bioinformatics</p></li>
+<li><p>Szymon Cholewiński, s253711, Msc Bioinformatics</p></li>
+<li><p>Magnus, s190867, Msc Bioinformatics</p></li>
+</ul>
+</section>
+<section id="libraries" class="level2">
+<h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;here&quot;</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;broom&quot;</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;cowplot&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="load-clean-and-augment-data" class="level1">
-<h1>Load, Clean and Augment Data</h1>
+</section>
+<section id="load-clean-and-augment-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-clean-and-augment-data">Load, Clean and Augment Data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_file <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;gravier.RData&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -3124,8 +3137,8 @@ vertical-align: -.125em;
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="at">outcome =</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="pca-analysis" class="level1">
-<h1>PCA Analysis</h1>
+<section id="pca-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="pca-analysis">PCA Analysis</h2>
 <p>In general, when performing PCA, we’ll want to do (at least) three things:</p>
 <ol type="1">
 <li><p>Look at the data in PC coordinates.</p></li>
@@ -3572,6 +3585,7 @@ vertical-align: -.125em;
 </div>
 </div>
 <p>There is no clear separation between the classes when visualizing the data along the first two principal components, PC1 and PC2.</p>
+</section>
 <section id="look-at-the-data-in-pc-coordinates" class="level2">
 <h2 class="anchored" data-anchor-id="look-at-the-data-in-pc-coordinates">Look at the data in PC coordinates</h2>
 <div class="cell">
@@ -6109,7 +6123,6 @@ vertical-align: -.125em;
 </div>
 </div>
 <p>This plot illustrates the cumulative proportion of variance explained by the principal components, showing how the total variance in the data is incrementally captured as more components are included. It highlights that a relatively large number of components is required to explain a significant portion of variance: about 15 components are needed to reach roughly 50% of explained variance, while approximately 100 components are required to attain around 90%. This indicates the data’s complexity and the need to retain many components for an adequate representation of the original variance in downstream analyses.</p>
-</section>
 </section>
 
 </main>
