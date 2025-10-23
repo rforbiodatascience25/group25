@@ -7,9 +7,6 @@ editor: visual
 ```{r}
 #| message: false
 library("tidyverse")
-library("modelr")
-library("broom")
-library("ggrepel")
 library("here")
 ```
 
@@ -21,4 +18,8 @@ data_file <- here("gravier.RData")
 
 ```{r}
 load(file = data_file)
+```
+
+```{r}
+gravier
 ```
