@@ -67,7 +67,7 @@ pca_fit |>
   theme_half_open(12) + background_grid()
 ```
 
-No clear distinction between classes is visible.
+There is no clear separation between the classes when visualizing the data along the first two principal components, PC1 and PC2.
 
 ## Look at the data in PC coordinates
 
@@ -84,7 +84,7 @@ This behavior is expected because PCA decomposes variance structure constrained 
 ```{r}
 # define arrow style for plotting
 arrow_style <- arrow(
-  angle = 20, ends = "first", type = "closed", length = grid::unit(8, "pt")
+  angle = 20, ends = "first", type = "closed", length = grid::unit(2, "pt")
 )
 
 # plot rotation matrix
@@ -103,7 +103,7 @@ pca_fit_few |>
   theme_minimal_grid(12)
 ```
 
-The plot appears cluttered because it is displaying 160 vectors (one per principal component), which causes extreme overlap and makes individual vectors indistinguishable. **Solve this**
+If we were to use all available data in **`pca_fit`**, the rotation plot would become cluttered and difficult to interpret due to the large number of vectors (one per gene), resulting in extreme overlap. Instead of reducing the number of components, the approach here is to select a smaller subset of genes (variables) from the beginning, which simplifies the rotation plot by reducing the number of vectors drawn. This method filters the high-dimensional dataset to a manageable subset of genes before performing PCA, making the visualization less cluttered and easier to interpret while still basing the analysis on a representative set of genes. The PCA performed on this reduced gene set (**`pca_fit_few`**) serves only as an illustrative example to provide a clearer and more interpretable rotation plot.
 
 ## Look at the variance explained by each PC
 
