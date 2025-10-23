@@ -1,6 +1,8 @@
 ---
 title: "group_assignment_class7"
-format: html
+format:
+  html:
+    embed-resources: true
 editor: visual
 ---
 
@@ -49,6 +51,13 @@ In general, when performing PCA, we’ll want to do (at least) three things:
 pca_fit <- gravier_clean_aug |> 
   select(where(is.numeric)) |>  #  columns except class column
   prcomp(scale = TRUE) # do PCA on scaled data
+pca_fit_few <- gravier_clean_aug |> 
+  select('g2E09','g7F07','g1A01','g3C09','g3H08','g1A08','g1B01','g1int1','g1E11','g8G02') |>  #  first 10 gene columns
+  prcomp(scale = TRUE) # do PCA on scaled data
+pca_fit_red <- gravier_clean_aug |> 
+  select(where(is.numeric)) |>  #  columns except class column
+  prcomp(scale = TRUE, tol = 0.39) # do PCA on scaled data
+  
 ```
 
 ```{r}
@@ -61,6 +70,8 @@ pca_fit |>
   ) +
   theme_half_open(12) + background_grid()
 ```
+
+No clear distinction between classes is visible.
 
 ## Look at the data in PC coordinates
 
@@ -81,7 +92,7 @@ arrow_style <- arrow(
 )
 
 # plot rotation matrix
-pca_fit |> 
+pca_fit_few |> 
   tidy(matrix = "rotation") |> 
   pivot_wider(names_from = "PC", names_prefix = "PC", values_from = "value") |> 
   ggplot(aes(PC1, PC2)) +
@@ -105,12 +116,29 @@ pca_fit %>%
   tidy(matrix = "eigenvalues")
 ```
 
+To visualize PCs impact the graph with all of them is created.
+
 ```{r}
 pca_fit %>%
   tidy(matrix = "eigenvalues") %>%
   ggplot(aes(PC, percent)) +
   geom_col(fill = "#56B4E9", alpha = 0.8) +
-  scale_x_continuous(breaks = 1) +
+  scale_x_continuous() +
+  scale_y_continuous(
+    labels = scales::percent_format(),
+    expand = expansion(mult = c(0, 0.01))
+  ) +
+  theme_minimal_hgrid(12)
+```
+
+To have a closer look, graph with first 20 component is also added.
+
+```{r}
+pca_fit_red %>%
+  tidy(matrix = "eigenvalues") %>%
+  ggplot(aes(PC, percent)) +
+  geom_col(fill = "#56B4E9", alpha = 0.8) +
+  scale_x_continuous(breaks = 1:20) +
   scale_y_continuous(
     labels = scales::percent_format(),
     expand = expansion(mult = c(0, 0.01))
