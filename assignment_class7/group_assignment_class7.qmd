@@ -33,10 +33,6 @@ gravier_clean_aug <- gravier_clean |>
   relocate(outcome = y)
 ```
 
-```{r}
-gravier_clean_aug
-```
-
 # PCA Analysis
 
 In general, when performing PCA, we’ll want to do (at least) three things:
@@ -62,7 +58,7 @@ pca_fit_red <- gravier_clean_aug |>
 
 ```{r}
 pca_fit |> 
-  augment(gravier_clean_aug) %>% # add original dataset back in
+  augment(gravier_clean_aug) |>  # add original dataset back in
   ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) + 
   geom_point(size = 1.5) +
   scale_color_manual(
@@ -77,7 +73,7 @@ No clear distinction between classes is visible.
 
 ```{r}
 # extract rotation matrix
-pca_fit %>%
+pca_fit |> 
   tidy(matrix = "rotation")
 ```
 
@@ -112,15 +108,15 @@ The plot appears cluttered because it is displaying 160 vectors (one per princip
 ## Look at the variance explained by each PC
 
 ```{r}
-pca_fit %>%
+pca_fit |> 
   tidy(matrix = "eigenvalues")
 ```
 
 To visualize PCs impact the graph with all of them is created.
 
 ```{r}
-pca_fit %>%
-  tidy(matrix = "eigenvalues") %>%
+pca_fit |> 
+  tidy(matrix = "eigenvalues") |> 
   ggplot(aes(PC, percent)) +
   geom_col(fill = "#56B4E9", alpha = 0.8) +
   scale_x_continuous() +
@@ -134,8 +130,8 @@ pca_fit %>%
 To have a closer look, graph with first 20 component is also added.
 
 ```{r}
-pca_fit_red %>%
-  tidy(matrix = "eigenvalues") %>%
+pca_fit_red |> 
+  tidy(matrix = "eigenvalues") |> 
   ggplot(aes(PC, percent)) +
   geom_col(fill = "#56B4E9", alpha = 0.8) +
   scale_x_continuous(breaks = 1:20) +
@@ -147,3 +143,22 @@ pca_fit_red %>%
 ```
 
 The first component captures 8% of the variation in the data.
+
+```{r}
+pca_fit |> 
+  tidy(matrix = "eigenvalues") |> 
+  mutate(cum_percent = cumsum(percent)) |> 
+  ggplot(aes(PC, cum_percent)) +
+  geom_line(color = "#56B4E9", size = 1) +
+  geom_point(color = "#0072B2", size = 0.5) +
+  scale_x_continuous() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(
+    x = "Principal Component",
+    y = "Cumulative Explained Variance (%)",
+    title = "Cumulative Variance Explained by Principal Components"
+  ) +
+  theme_minimal()
+```
+
+This plot illustrates the cumulative proportion of variance explained by the principal components, showing how the total variance in the data is incrementally captured as more components are included. It highlights that a relatively large number of components is required to explain a significant portion of variance: about 15 components are needed to reach roughly 50% of explained variance, while approximately 100 components are required to attain around 90%. This indicates the data's complexity and the need to retain many components for an adequate representation of the original variance in downstream analyses.
