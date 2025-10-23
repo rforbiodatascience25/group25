@@ -30,6 +30,8 @@ library("cowplot")
 
 ## Load, Clean and Augment Data
 
+Data for processing is loaded and prepared for analysis.
+
 ```{r}
 data_file <- here("gravier.RData")
 ```
@@ -62,13 +64,16 @@ pca_fit <- gravier_clean_aug |>
   select(where(is.numeric)) |>  #  columns except class column
   prcomp(scale = TRUE) # do PCA on scaled data
 pca_fit_few <- gravier_clean_aug |> 
-  select('g2E09','g7F07','g1A01','g3C09','g3H08','g1A08','g1B01','g1int1','g1E11','g8G02') |>  #  first 10 gene columns
+  select('g2E09','g7F07','g1A01','g3C09','g3H08','g1A08',
+         'g1B01','g1int1','g1E11','g8G02') |>  #  first 10 gene columns
   prcomp(scale = TRUE) # do PCA on scaled data
 pca_fit_red <- gravier_clean_aug |> 
   select(where(is.numeric)) |>  #  columns except class column
   prcomp(scale = TRUE, tol = 0.39) # do PCA on scaled data
   
 ```
+
+Subsets of data were prepared and saved for PCA analysis
 
 ```{r}
 pca_fit |> 
@@ -78,7 +83,10 @@ pca_fit |>
   scale_color_manual(
     values = c(poor = "#D55E00", good = "#0072B2")
   ) +
-  theme_half_open(12) + background_grid()
+  theme_half_open(12) + 
+  background_grid()+
+  labs(x = "PC1", 
+       y = "PC2")
 ```
 
 There is no clear separation between the classes when visualizing the data along the first two principal components, PC1 and PC2.
